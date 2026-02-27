@@ -28,3 +28,11 @@ Rebalance on a fixed schedule and avoid emotional overrides.
 Exclude names/businesses outside your mandate (country/crypto/etc.).
 Never allocate capital you can’t afford to lose.
 
+How often should this model be run? Daily, weekly, monthly, quarterly?
+Best cadence for this model right now: weekly, with full refresh after earnings updates.
+Practical setup:
+•	Weekly run (recommended default): refresh ranks/portfolio using latest price/vol + any new fundamentals.
+•	Quarterly deep review: after earnings season, re-evaluate thresholds, stage mix, and diagnostics.
+•	Daily is usually too noisy for this model’s fundamental backbone.
+•	Monthly is acceptable if you want lower turnover, but can miss faster changes.
+If you want one rule: run every Friday after market close, and run an extra cycle during peak earnings weeks.
