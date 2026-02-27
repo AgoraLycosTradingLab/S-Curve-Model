@@ -1,0 +1,75 @@
+agora_lycos/
+  scurve/
+    pyproject.toml (or requirements.txt)
+    README.md
+
+    research_scurve.py
+
+    filterstemplate.py
+
+
+    config/
+      scurve_config.yaml
+
+    scurve/
+
+
+      __init__.py
+      run.py                # CLI entrypoint
+
+      core/
+        types.py            # dataclasses, typed results
+        config.py           # config loading + validation
+        logging.py          # structured logger + run metadata
+        utils.py            # shared helpers (dates, math guards)
+
+      data/
+        universe.py         # universe selection + liquidity filters
+        fundamentals.py     # revenue loading + PIT alignment + lag
+        market.py           # prices, vol, momentum, breakout
+        revisions.py        # optional EPS revision loader (stub initially)
+        pit.py		    # point-in-time enforcement utilities
+	raw/
+	  sp500_master.csv  
+	  nasdaq_master.csv            
+
+      models/
+        logistic.py         # logistic + d1 + d2
+        gompertz.py         # gompertz + d1 + d2
+        bass.py             # optional later
+
+      fit/
+        fitters.py          # bounded NLS fits (TRF) + init heuristics
+        diagnostics.py      # NRMSE, bound flags, sanity checks
+        gates.py            # pass/fail + fallback routing
+
+      features/
+        pref_fit.py         # Revenue_TTM, YoY, acceleration
+        post_fit.py         # maturity, slope, curvature
+        fallback.py         # smoothed growth/accel scoring features
+	pre_fit.py
+
+      score/
+        stage.py            # stage label logic
+        composite.py        # 0–100 score + subscores
+
+      portfolio/
+        construct.py        # top-decile selection + caps + weights
+        risk.py             # sector cap, pos cap, vol targeting (optional)
+
+      backtest/
+        walkforward.py      # quarterly walk-forward harness
+        cost.py            # costs + slippage assumptions
+        metrics.py          # IC, decile spreads, perf stats
+
+      report/
+        summary.py          # summary_report.md generator
+        drift.py            # drift checks + flags
+
+    runs/                   # artifacts written here and csv files
+    logs/                   # logs written here
+    tests/
+      test_models.py
+      test_diagnostics.py
+      test_scoring.py
+      test_pipeline_smoke.py
