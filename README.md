@@ -1,2 +1,30 @@
 # S-Curve-Model
 Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise fallback growth features, assigns lifecycle stage, creates composite + valuation score, ranks stocks, applies policy/risk filters, and outputs portfolio weights + diagnostics.
+
+Output is 4 files: scores.csv (ranked names + scores), fit_diagnostics.csv (fit pass/fail reasons), portfolio_weights.csv (final holdings/weights), and summary.json (run stats).
+Stocks are selected by highest score_total after universe filters, policy/risk exclusions, and top-percentile cutoff.
+
+
+
+Model Risks
+
+Data quality risk: yfinance gaps/latency can distort ranks.
+Fit risk: many names fail S-curve fit (too_few_points), so fallback heuristics dominate.
+Regime risk: growth signals can underperform in value/defensive markets.
+Concentration risk: top-percentile picks may cluster by theme/factor.
+Valuation trap risk: “high growth” can still be overpriced or low quality.
+Execution risk: slippage, spread, liquidity, tax, and turnover drag.
+Model risk: thresholds/weights are hand-tuned and can be unstable.
+How users can make better choices
+
+Treat output as a shortlist, not a buy list.
+Check each name’s earnings trend, guidance, and balance sheet.
+Validate valuation (P/E, EV/FCF, margins, FCF quality) vs peers.
+Read filings/transcripts for business risks and accounting quality.
+Enforce personal rules: max position size, stop loss, cash buffer.
+Diversify across sectors/factors; avoid theme overexposure.
+Paper trade first; track hit-rate, drawdown, and turnover.
+Rebalance on a fixed schedule and avoid emotional overrides.
+Exclude names/businesses outside your mandate (country/crypto/etc.).
+Never allocate capital you can’t afford to lose.
+
