@@ -1,5 +1,7 @@
 # S-Curve-Model
-Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise fallback growth features, assigns lifecycle stage, creates composite + valuation score, ranks stocks, applies policy/risk filters, and outputs portfolio weights + diagnostics.
+Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise no selection, assigns lifecycle stage, creates composite + valuation score, ranks stocks, applies policy/risk filters, and outputs portfolio weights + diagnostics.
+
+This is a very strict Gompertz/Bass stock screener, 99% of the time no stock selection.  
 
 Output is 4 files: scores.csv (ranked names + scores), fit_diagnostics.csv (fit pass/fail reasons), portfolio_weights.csv (final holdings/weights), and summary.json (run stats).
 Stocks are selected by highest score_total after universe filters, policy/risk exclusions, and top-percentile cutoff.
@@ -9,13 +11,13 @@ Stocks are selected by highest score_total after universe filters, policy/risk e
 Model Risks
 
 Data quality risk: yfinance gaps/latency can distort ranks.
-Fit risk: many names fail S-curve fit (too_few_points), so fallback heuristics dominate.
+Fit risk: many names fail S-curve fit (too_few_points), so 99% of the time no stock selection.
 Regime risk: growth signals can underperform in value/defensive markets.
 Concentration risk: top-percentile picks may cluster by theme/factor.
 Valuation trap risk: “high growth” can still be overpriced or low quality.
 Execution risk: slippage, spread, liquidity, tax, and turnover drag.
 Model risk: thresholds/weights are hand-tuned and can be unstable.
-How users can make better choices
+
 
 Treat output as a shortlist, not a buy list.
 Check each name’s earnings trend, guidance, and balance sheet.
@@ -28,11 +30,5 @@ Rebalance on a fixed schedule and avoid emotional overrides.
 Exclude names/businesses outside your mandate (country/crypto/etc.).
 Never allocate capital you can’t afford to lose.
 
-How often should this model be run? Daily, weekly, monthly, quarterly?
-Best cadence for this model right now: weekly, with full refresh after earnings updates.
-Practical setup:
-•	Weekly run (recommended default): refresh ranks/portfolio using latest price/vol + any new fundamentals.
-•	Quarterly deep review: after earnings season, re-evaluate thresholds, stage mix, and diagnostics.
-•	Daily is usually too noisy for this model’s fundamental backbone.
-•	Monthly is acceptable if you want lower turnover, but can miss faster changes.
+
 If you want one rule: run every Friday after market close, and run an extra cycle during peak earnings weeks.
