@@ -12,3 +12,12 @@ In powershell:
 Example:
 --asof 2026-03-03 --config SCurve\config\scurve_config.yaml
 
+Output csv files will appear in a run/YYYYMMDD folder outside of the scurve folder.
+
+Example:
+
+run/
+  20260303/
+    fit_diagnostics.csv
+    portfolio_weights.csv
+    scores.csv
