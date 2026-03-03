@@ -1,4 +1,4 @@
-agora_lycos/
+  run/
   scurve/
     pyproject.toml (or requirements.txt)
     README.md
@@ -12,7 +12,6 @@ agora_lycos/
       scurve_config.yaml
 
     scurve/
-
 
       __init__.py
       run.py                # CLI entrypoint
@@ -72,4 +71,5 @@ agora_lycos/
       test_models.py
       test_diagnostics.py
       test_scoring.py
+
       test_pipeline_smoke.py
