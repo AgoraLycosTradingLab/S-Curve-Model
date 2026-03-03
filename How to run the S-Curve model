@@ -1,0 +1,14 @@
+PYTHON +3.14
+
+Install pip packages:
+
+-m pip install numpy pandas yfinance pyyaml
+
+
+Run the model: Select date-
+\folder.venv\Scripts\python.exe SCurve\scurve\run.py --asof YYYY-MM-DD --config SCurve\config\scurve_config.yaml
+
+In powershell:
+Example:
+--asof 2026-03-03 --config SCurve\config\scurve_config.yaml
+
