@@ -1,6 +1,8 @@
 # S-Curve-Model
 This is a very strict Gompertz/Bass stock screener, 99% of the time no stock selection.  
 
+Takes about 15 minutes to go through the stock universe
+
 Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise no selection, assigns lifecycle stage, creates composite + valuation score, ranks stocks, applies policy/risk filters, and outputs portfolio weights + diagnostics.
 
 Output is 4 files: scores.csv (ranked names + scores), fit_diagnostics.csv (fit pass/fail reasons), portfolio_weights.csv (final holdings/weights), and summary.json (run stats).
