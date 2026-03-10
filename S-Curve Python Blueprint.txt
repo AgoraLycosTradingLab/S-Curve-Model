@@ -29,8 +29,8 @@
         revisions.py        # optional EPS revision loader (stub initially)
         pit.py		    # point-in-time enforcement utilities
 	raw/
-	  sp500_master.csv  
-	  nasdaq_master.csv            
+	  SP500-listed-stocks.csv  
+	  nasdaq-listed-symbols.csv            
 
       models/
         logistic.py         # logistic + d1 + d2
@@ -73,3 +73,4 @@
       test_scoring.py
 
       test_pipeline_smoke.py
+
