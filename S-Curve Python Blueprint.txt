@@ -1,4 +1,4 @@
-  run/
+
   scurve/
     pyproject.toml (or requirements.txt)
     README.md
@@ -65,7 +65,23 @@
         summary.py          # summary_report.md generator
         drift.py            # drift checks + flags
 
-    runs/                   # artifacts written here and csv files
+    runs/YYYYMMDD           # normal run artifacts written here and csv files
+		config_snapshot.yaml
+		fit_diagnostics.csv
+		portfolio_weights.csv
+		run_metadata.json
+		scores.csv
+		summary.json
+
+    runs_fast/YYYYMMDD           # fast run artifacts written here and csv files
+		config_snapshot.yaml
+		fit_diagnostics.csv
+		portfolio_weights.csv
+		run_metadata.json
+		scores.csv
+		summary.json	
+
+
     logs/                   # logs written here
     tests/
       test_models.py
@@ -73,4 +89,5 @@
       test_scoring.py
 
       test_pipeline_smoke.py
+
 
