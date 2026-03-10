@@ -1,14 +1,15 @@
 # S-Curve-Model
 This is a very strict Gompertz/Bass stock screener, 99% of the time no stock selection.  
 If you want one rule: run every Friday after market close, and run an extra cycle during peak earnings weeks.
-Takes about 15 minutes to go through the stock universe
+2 Choices: Fast and Normal.  Fast Takes about 3 minutes to complete.  Normal Takes about an hour
 
-Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise no selection, assigns lifecycle stage, creates composite + valuation score, ranks stocks, applies policy/risk filters, and outputs portfolio weights + diagnostics.
+Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise no selection, .
 
 Output is 4 files: scores.csv (ranked names + scores), fit_diagnostics.csv (fit pass/fail reasons), portfolio_weights.csv (final holdings/weights), and summary.json (run stats).
 Stocks are selected by highest score_total after universe filters, policy/risk exclusions, and top-percentile cutoff.
 
-
+Fast = faster iteration, useful for debugging and strategy testing.
+Normal = more complete research output, likely longer but better coverage and fidelity.
 
 Model Risks
 
