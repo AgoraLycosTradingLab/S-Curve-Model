@@ -1,6 +1,6 @@
 # S-Curve-Model
 This is a very strict Gompertz/Bass stock screener, 99% of the time no stock selection.  
-If you want one rule: run every Friday after market close, and run an extra cycle during peak earnings weeks.
+If you want one rule: run fast mode every Friday after market close, and run an extra cycle during peak earnings weeks.
 2 Choices: Fast and Normal.  Fast Takes about 3 minutes to complete.  Normal Takes about an hour
 
 Builds a filtered stock universe (S&amp;P500+Nasdaq), pulls yfinance fundamentals/market data, computes S-curve fits (Gompertz/Bass) when possible, otherwise no selection, .
