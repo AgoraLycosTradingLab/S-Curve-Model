@@ -1,0 +1,94 @@
+﻿run:
+  seed: 42
+  output_root: "SCurve/runs"
+  log_root: "logs"
+
+data:
+  provider: "yfinance"
+  sp500_csv: "scurve/data/raw/SP500-listed-stocks.csv"
+  nasdaq_csv: "scurve/data/raw/nasdaq-listed-symbols.csv"
+  universe_cap_buckets: []
+  yfinance:
+    history_start: "2010-01-01"
+    report_delay_days: 45
+    chunk_size: 100
+    min_quarters: 1
+    # max_tickers: 100   # optional throttle for faster tests
+  min_quarters: 16
+  lag_days: 60
+  price_min: 5.0
+  market_cap_min_usd: 2000000000
+  adv_dollar_min_usd: 20000000
+
+
+fit:
+  models: ["gompertz", "bass"]
+  strict_parametric_only: true
+  loss: "huber"
+  f_scale: 1.0
+  max_nfev: 5000
+  nrmse_max: 0.25
+  k_bounds_multiplier: [1.05, 10.0]
+  r_bounds: [0.0001, 5.0]
+  t0_pad_quarters: 2
+  k_bound_eps: 0.001
+
+gates:
+  require_fit_ok: true
+  reject_if_k_on_upper_bound: false   # if false: apply penalty instead
+
+scoring:
+  maturity_center: 0.50
+  maturity_width: 0.18
+  stage_weight: 0.55
+  slope_weight: 0.25
+  accel_weight: 0.20
+  k_bound_penalty: 0.70
+
+ranking:
+  top_percentile: 0.10
+
+risk:
+  max_position_weight: 0.05
+  sector_cap: 0.35
+  vol_target_annual: 0.18
+  use_vol_targeting: false
+
+backtest:
+  rebalance: "quarterly"
+  cost_bps_per_trade: 20
+  slippage_bps_per_trade: 5
+
+valuation:
+  enabled: true
+  provider: "yfinance"
+  # max_tickers: 200   # optional speed throttle
+
+policy:
+  us_only: true
+  allowed_countries: ["UNITED STATES", "USA", "US"]
+  exclude_tickers: []
+
+# A: Revenue only
+# B: Revenue + EPS revisions
+# C: Revenue + EPS revisions + breakout confirmation
+# D: Full charter overlays (same as C for now; extend later)
+overlay_mode: "A"
+
+overlays:
+  eps_revisions:
+    enabled: false           # overridden by overlay_mode in config.py
+    lookback_days: 90
+    min_revision_z: 0.0
+
+  breakout:
+    enabled: false           # overridden by overlay_mode in config.py
+    lookback_days: 126       # ~6 months trading day
+    min_rel_strength: 0.0
+    require_price_above_high: true
+
+  market_filters:
+    enabled: true            # always on
+    min_mkt_cap_usd: 2000000000
+    min_addv_usd: 20000000
+    min_price: 5.0
