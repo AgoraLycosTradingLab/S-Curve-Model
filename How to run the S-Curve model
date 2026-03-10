@@ -8,16 +8,23 @@ Install pip packages:
 Run the model: Select date-
 \folder.venv\Scripts\python.exe SCurve\scurve\run.py --asof YYYY-MM-DD --config SCurve\config\scurve_config.yaml
 
+or
+
+python -m scurve.run --asof YYYY-MM-DD --config SCurve\config\scurve_config.yaml
+
+
 In powershell:
 Example:
 --asof 2026-03-03 --config SCurve\config\scurve_config.yaml
 
-Output csv files will appear in a run/YYYYMMDD folder outside of the scurve folder.
+python -m scurve.run --asof 2026-03-10 --config SCurve\config\scurve_config.yaml
+
+
+Output csv files will appear in a run/YYYYMMDD folder inside of the scurve/data/raw folder.
 
 Example:
 
-run/
-  20260303/
+/scurve/data/run/20260303/
     fit_diagnostics.csv
     portfolio_weights.csv
     scores.csv
