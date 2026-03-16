@@ -5,8 +5,15 @@ Install pip packages:
 -m pip install numpy pandas yfinance pyyaml
 
 
-Run the model: Select date-
-\folder.venv\Scripts\python.exe SCurve\scurve\run.py --asof YYYY-MM-DD --config SCurve\config\scurve_config.yaml
+Pick a date within the powershell YYYY-MM-DD
+
+Run Fast Model:
+.\.venv\Scripts\python.exe -m scurve.run --asof YYYY-MM-DD --config .\SCurve\config\scurve_config_fast.yaml
+
+
+
+Run the normal model: Select date-
+\.venv\Scripts\python.exe SCurve\scurve\run.py --asof YYYY-MM-DD --config SCurve\config\scurve_config.yaml
 
 or
 
